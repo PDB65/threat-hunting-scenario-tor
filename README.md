@@ -50,12 +50,14 @@ Searched for any `ProcessCommandLine` that contained the string "tor-browser-win
 
 ```kql
 
-DeviceProcessEvents  
-| where DeviceName == "threat-hunt-lab"  
-| where ProcessCommandLine contains "tor-browser-windows-x86_64-portable-14.0.1.exe"  
-| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine
+DeviceProcessEvents
+| where ProcessCommandLine contains "tor-browser-windows-x86_64-portable-14.5.1.exe"
+| where DeviceName == "burwell-new-vm"
+| where AccountName == "doreen"
+| project  Timestamp, DeviceName, AccountName, ActionType, ProcessCommandLine, FileName, SHA256
 ```
-<img width="1212" alt="image" src="https://github.com/user-attachments/assets/b07ac4b4-9cb3-4834-8fac-9f5f29709d78">
+
+![image](https://github.com/user-attachments/assets/5c50a3de-443e-4573-adc1-e5b0948a6cc8)
 
 ---
 
@@ -72,6 +74,7 @@ DeviceProcessEvents
 | project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine  
 | order by Timestamp desc
 ```
+
 <img width="1212" alt="image" src="https://github.com/user-attachments/assets/b13707ae-8c2d-4081-a381-2b521d3a0d8f">
 
 ---
